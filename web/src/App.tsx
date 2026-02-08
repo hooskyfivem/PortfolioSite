@@ -11,8 +11,8 @@ import Profile from './pages/Profile';
 import Terms from './pages/Legal/Terms';
 import Refund from './pages/Legal/Refund';
 import Privacy from './pages/Legal/Privacy';
-import Login from './pages/Login/Login';
-import Register from './pages/Login/Register';
+// import Login from './pages/Login/Login';
+// import Register from './pages/Login/Register';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
