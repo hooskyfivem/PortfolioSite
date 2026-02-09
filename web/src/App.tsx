@@ -127,21 +127,21 @@ function App() {
       </main>
 
       <footer className="footer">
-        <div className="footer-left">
-          <img src="/hooskyBrand.png" className="logo" alt="Logo"></img>
-          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
-          <div className="footer-advertise">
-                <img src="/Discord_White.webp" className="discordLogo"></img>
-                <text>Discord Server</text>
-          </div>
+        <div className="footerContainer">
+            <div className="footer-left">
+                <img src="/hooskyBrand.png" className="logo" alt="Logo"></img>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
+                <div className="footer-advertise">
+                    <img src="/Discord_White.webp" className="discordLogo"></img>
+                    <text>Discord Server</text>
+                </div>
+            </div>
+            <div className="footer-mid">
+                  <p>test</p>
+            </div>
         </div>
-        <div className="footer-mid">
-              <p>test</p>
-        </div>
-        <div className="footer-end">
-              <p>test2</p>
-        </div>
-        
+        <hr></hr>
+        <h4 className="rights">© 2026 Hoosky. All rights reserved.</h4>
       </footer>
 
       </div>
