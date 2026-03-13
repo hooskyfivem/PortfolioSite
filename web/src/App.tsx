@@ -1,6 +1,4 @@
-import { useState, type SetStateAction } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
 import BackgroundParticles from './BackgroundParticles';
 import Home from './pages/Home';
@@ -11,34 +9,67 @@ import Profile from './pages/Profile';
 import Terms from './pages/Legal/Terms';
 import Refund from './pages/Legal/Refund';
 import Privacy from './pages/Legal/Privacy';
-// import Login from './pages/Login/Login';
-// import Register from './pages/Login/Register';
+import Login from './pages/Login/Login';
+import Register from './pages/Login/Register';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { supabase } from './supabaseClient';
 
 function App() {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('home');
+  const location = useLocation();
   const [isLegalOpen, setIsLegalOpen] = useState(false);
   const DiscordLink = 'https://discord.gg/Djmndes9';
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const remembered = localStorage.getItem('rememberMe') === 'true';
+    if (remembered) {
+      supabase.auth.getSession().then(({ data }) => {
+        if (data.session) {
+          setIsLoggedIn(true);
+        }
+      });
+    }
+  }, [])
 
   const handleCartClick = () => {
-    setActiveTab('cart')
+    navigate('/cart')
     setIsMenuOpen(false);
   }
 
-  const handleProfileClick = () => {
-    setActiveTab('profile')
-    setIsMenuOpen(false);
-  }
-
-  const handleLegalClick = (tab: SetStateAction<string>) => {
-    setActiveTab(tab);
+  const handleLegalClick = (path: string) => {
+    navigate(path);
     setIsLegalOpen(false);
     setIsMenuOpen(false);
   }
 
-  return (
-    <>
+  const HandleLoginClick = () => {
+    if (!isLoggedIn) {
+      console.log("Not logged in")
+      navigate('/login')
+      setIsMenuOpen(false);
+    } else {
+      console.log("Logged in")
+      navigate('/profile')
+      setIsMenuOpen(false);
+    }
+  }
 
+  if (location.pathname === '/login' || location.pathname === '/register') {
+    return (
+      <div className="bg-black-red">
+        <BackgroundParticles />
+        <Routes>
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
+        </Routes>
+      </div>
+    )
+  }
+
+    return (
+    <>
       <div className="bg-black-red">
         <BackgroundParticles />
         <header className="navbar">
@@ -62,21 +93,22 @@ function App() {
           {/* Center */}
 
           <nav className={`nav-center ${isMenuOpen ? 'open' : ''}`}>
-            <a className={activeTab === 'home' ? 'selected': ''} onClick={() => {setActiveTab('home'); setIsMenuOpen(false);} }>Home</a>
-            <a className={activeTab === 'products' ? 'selected': ''} onClick={() => {setActiveTab('products'); setIsMenuOpen(false);}}>Products</a>
-            <a className={activeTab === 'forum' ? 'selected': ''} onClick={() => {setActiveTab('forum'); setIsMenuOpen(false);}}>Forum</a>
+            <a className={location.pathname === '/' ? 'selected' : ''} onClick={() => {navigate('/'); setIsMenuOpen(false)}}>Home</a>
+            <a className={location.pathname === '/products' ? 'selected' : ''} onClick={() => {navigate('/products'); setIsMenuOpen(false)}}>Products</a>
+            <a className={location.pathname === '/forum' ? 'selected' : ''} onClick={() => {navigate('/forum'); setIsMenuOpen(false)}}>Forum</a>
+            
             {/* <a className={activeTab === 'legal' ? 'selected': ''}>Legal</a> */}
 
             <div className="dropdown-wrapper" onMouseEnter={() => setIsLegalOpen(true)} onMouseLeave={() => setIsLegalOpen(false)}>
-              <a className={`dropdown-trigger ${['terms', 'privacy', 'refund'].includes(activeTab) ? 'selected' : ''}`}>
+              <a className={`dropdown-trigger ${['/terms', '/privacy', '/refund'].includes(location.pathname) ? 'selected' : ''}`}>
                 Legal <i className={`fa fa-chevron-down ${isLegalOpen ? 'rotate' : ''}`}></i>
               </a>
 
               {isLegalOpen && (
                 <div className="dropdown-menu">
-                  <a onClick={() => {handleLegalClick('terms')}}>Terms & Conditions</a>
-                  <a onClick={() => {handleLegalClick('privacy')}}>Privacy Policy</a>
-                  <a onClick={() => {handleLegalClick('refund')}}>Refund Policy</a>
+                  <a onClick={() => {handleLegalClick('/terms')}}>Terms & Conditions</a>
+                  <a onClick={() => {handleLegalClick('/privacy')}}>Privacy Policy</a>
+                  <a onClick={() => {handleLegalClick('/refund')}}>Refund Policy</a>
                 </div>
               )}
             </div>
@@ -84,7 +116,7 @@ function App() {
             <div className="mobile-menu-actions">
               <div className="nav-actions">
                 <div className="cart" onClick={handleCartClick}><i className="fa fa-shopping-basket"></i></div>
-                <div className="profile" onClick={handleProfileClick}><i className="fa fa-user"></i></div>
+                <div className="profile" onClick={HandleLoginClick}><i className="fa fa-user"></i></div>
               </div>
               <div className="Advertise">
                 <text>Join Discord</text>
@@ -109,7 +141,7 @@ function App() {
               <div className="cart" onClick={handleCartClick}>
                 <i className="fa fa-shopping-basket"></i>
               </div>
-              <div className="profile" onClick={handleProfileClick}>
+              <div className="profile" onClick={HandleLoginClick}>
                 <i className="fa fa-user"></i>
               </div>
               <div className="Advertise" onClick={() => window.open(DiscordLink, '_blank', 'noopener,noreferrer')}>
@@ -122,14 +154,18 @@ function App() {
       </header>
 
       <main className="main-content">
-          {activeTab === 'home' && <Home />}
-          {activeTab === 'products' && <Products />}
-          {activeTab === 'forum' && <Forum />}
-          {activeTab === 'terms' && <Terms setActiveTab={setActiveTab} />}
-          {activeTab === 'privacy' && <Privacy setActiveTab={setActiveTab} />}
-          {activeTab === 'refund' && <Refund setActiveTab={setActiveTab} />}
-          {activeTab === 'cart' && <Cart />}
-          {activeTab === 'profile' && <Profile />}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/forum" element={<Forum />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/refund" element={<Refund />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/profile" element={<Profile setIsLoggedIn={setIsLoggedIn}/>} />
+          {/* <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn}/>} />
+          <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn}/>} /> */}
+        </Routes>
       </main>
 
       <footer className="footer">

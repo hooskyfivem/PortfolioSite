@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 const BackgroundParticles = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const Amount = 150;
+  const Amount = 60;
   const Size = 2;
   const Speed = 0.2;
   const Opacity = 6;

@@ -1,0 +1,211 @@
+.login-page-wrapper {
+    min-height: calc(100vh - 90px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    width: 800px;
+    max-width: 100%;
+    height: 450px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.login-container .left-container {
+    width: 250px;
+    min-width: 250px;
+    height: 100%;
+    background-color: #1D0C0D;
+    border: 2px solid #1B1B1B;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-right: 1px solid #3B1215;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.login-container .left-container .brandContainer .logoContainer {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    flex-shrink: 0;
+    background-color: var(--nav-background-color);
+    border: 2px solid var(--nav-border-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container .left-container .brandContainer {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    gap: 8px;
+    align-items: center;
+}
+
+.login-container .left-container .brandContainer p {
+    font-weight: bold;
+}
+
+.login-container .left-container h2 {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+}
+
+.login-container .left-container .servicesdesc {
+    font-weight: 500;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+/* Right COntainer */
+
+.login-container .right-container {
+    flex: 1;
+    height: 100%;
+    background-color: #101010;
+    border: 2px solid #1B1B1B;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-left: 1px solid #3B1215;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 36px;
+    box-sizing: border-box;
+    gap: 6px;
+}
+
+.right-container h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.right-container .subtitle {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 0 16px 0;
+}
+
+.right-container .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.right-container .input-group label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.right-container .input-group input {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    height: 38px;
+    padding: 0 12px;
+    color: white;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.right-container .input-group input:focus {
+    border-color: rgba(181, 42, 53, 0.5);
+}
+
+.right-container .login-btn {
+    width: 100%;
+    height: 38px;
+    background: #B52A35;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.right-container .login-btn:hover {
+    background: #a02030;
+    transform: translateY(-2px);
+}
+
+.right-container .bottom-link {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+    text-align: center;
+    margin-top: 12px;
+}
+
+.right-container .bottom-link span {
+    color: #e06070;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .login-container {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+
+    .login-container .left-container {
+        width: 100%;
+        min-width: unset;
+        height: 120px;
+        border-radius: 8px 8px 0 0;
+        border: 2px solid #1B1B1B;
+        border-bottom: 1px solid #3B1215;
+        gap: 4px;
+    }
+
+    .login-container .right-container {
+        width: 100%;
+        height: auto;
+        min-height: 350px;
+        padding: 20px;
+        border-radius: 0 0 8px 8px;
+        border: 2px solid #1B1B1B;
+        border-top: 1px solid #3B1215;
+    }
+
+    .login-container .left-container h2 {
+        font-size: 14px;
+    }
+
+    .login-container .left-container .servicesdesc {
+        font-size: 10px;
+    }
+
+    .login-container .left-container .brandContainer .logoContainer {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
+    }
+
+    .login-container .left-container .brandContainer .logoContainer img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .login-container .left-container .brandContainer p {
+        font-size: 14px;
+    }
+}

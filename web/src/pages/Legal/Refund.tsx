@@ -1,18 +1,20 @@
 import React from 'react';
 import '../../styles/Legal.css';
+import { useNavigate } from 'react-router-dom';
 
-interface TermsProps {
-    setActiveTab: (tab: string) => void;
-}
+// interface TermsProps {
+//     setActiveTab: (tab: string) => void;
+// }
 
-const Refund: React.FC<TermsProps> = ({setActiveTab}) => {
+const Refund: React.FC = () => {
+    const navigate = useNavigate();
     return (
         <>
         <title>Refund Policy - Hoosky</title>
         <meta name="description" content="Refund Policy" />
         <div className="legal-page-wrapper">
             <div className="legal-page-container">
-                <a className="homeNavigation" onClick={() => {setActiveTab('home')}}>Home <i className={'fa fa-chevron-right'}></i></a>
+                <a className="homeNavigation" onClick={() => {navigate('/')}}>Home <i className={'fa fa-chevron-right'}></i></a>
                 <h1>Refund Policy</h1>
                 <div className="legal-conditions-container">
                     <h4 className="legal-description">Welcome to Hoosky Services ("we," "our," "us"). By accessing or using hooskyservices.xyz, you agree to these terms of Service. If you do not agree, please do not use our website or services.</h4>
@@ -57,7 +59,7 @@ const Refund: React.FC<TermsProps> = ({setActiveTab}) => {
                     </div>
                     <div className="term-item">
                         <h4 className="legal-title">7. Privacy Policy</h4>
-                        <h4 className="legal-description">Your privacy is important. Please review our <a onClick={() => {setActiveTab('privacy'); setTimeout(() => {window.scrollTo({top: 0, behavior: 'instant'});}, 0);}}>Privacy Policy</a> to understand how Hoosky Services collects, uses, and protects your information.</h4>
+                        <h4 className="legal-description">Your privacy is important. Please review our <a onClick={() => {navigate('/privacy'); setTimeout(() => {window.scrollTo({top: 0, behavior: 'instant'});}, 0);}}>Privacy Policy</a> to understand how Hoosky Services collects, uses, and protects your information.</h4>
                     </div>
                     <div className="term-item">
                         <h4 className="legal-title">8. Changes to Terms</h4>

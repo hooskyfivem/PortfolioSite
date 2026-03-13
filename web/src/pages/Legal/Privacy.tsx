@@ -1,18 +1,16 @@
 import React from 'react';
 import '../../styles/Legal.css';
+import { useNavigate } from 'react-router-dom';
 
-interface TermsProps {
-    setActiveTab: (tab: string) => void;
-}
-
-const Privacy: React.FC<TermsProps> = ({setActiveTab}) => {
+const Privacy: React.FC = () => {
+    const navigate = useNavigate();
     return (
         <>
         <title>Privacy Policy - Hoosky</title>
         <meta name="description" content="Privacy Policy" />
         <div className="legal-page-wrapper">
             <div className="legal-page-container">
-                <a className="homeNavigation" onClick={() => {setActiveTab('home')}}>Home <i className={'fa fa-chevron-right'}></i></a>
+                <a className="homeNavigation" onClick={() => {navigate('/')}}>Home <i className={'fa fa-chevron-right'}></i></a>
                 <h1>Privacy Policy</h1>
                 <div className="legal-conditions-container">
                     <h4 className="legal-description">This Privacy Policy explains how Hoosky Services ("we", "our", "us") collects, uses, stores, and protects customer information when using our website and services.</h4>
