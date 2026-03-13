@@ -26,10 +26,9 @@ const BackgroundParticles = () => {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        // 3D Logic: Randomize size/speed. Smaller = further away/darker.
         this.size = Math.random() * 2 + Size; 
         this.speed = this.size * Speed * 1.2; 
-        this.opacity = this.size / Opacity; // Lighter particles are "closer"
+        this.opacity = this.size / Opacity;
       }
 
       update() {
@@ -42,7 +41,7 @@ const BackgroundParticles = () => {
 
       draw() {
         if (!ctx) return;
-        ctx.fillStyle = `rgba(80, 80, 80, ${this.opacity})`;
+        ctx.fillStyle = `rgba(180, 1, 1, ${this.opacity})`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();

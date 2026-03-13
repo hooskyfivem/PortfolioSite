@@ -1,8 +1,8 @@
-#root { 
-  --nav-background-color: #ffffff;
+/* #root { 
+  --nav-background-color: #d63031;
   --nav-border-color: #c4c4c4;
-  --selected-text-color: #000;
-}
+  --selected-text-color: #fff;
+} */
 
 a, a:visited, a:hover, a:active {
     color: #e5e5e5;

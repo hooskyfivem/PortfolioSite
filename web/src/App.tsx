@@ -46,8 +46,14 @@ function App() {
 
           {/* LEFT */}
           <div className="nav-left">
-              <img src="/hooskyBrand.png" className="logo" alt="Logo"></img>
+            <div className="BrandLogo">
+              <img src="/hoosky.png"></img>
             </div>
+            <div className="BrandTitles">
+              <p>Hoosky Services</p>
+              <p>Freelance Developer</p>
+            </div>
+          </div>
 
           <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <i className={isMenuOpen ? "fa fa-times" : "fa fa-bars"}></i>
@@ -77,12 +83,12 @@ function App() {
           
             <div className="mobile-menu-actions">
               <div className="nav-actions">
-                <div className="cart" onClick={handleCartClick}><i className="fa fa-shopping-cart"></i></div>
+                <div className="cart" onClick={handleCartClick}><i className="fa fa-shopping-basket"></i></div>
                 <div className="profile" onClick={handleProfileClick}><i className="fa fa-user"></i></div>
               </div>
               <div className="Advertise">
                 <text>Join Discord</text>
-                <img src="/Discord.webp" className="discordLogo" alt="Discord" />
+                <img src="/Discord_White.webp" className="discordLogo" alt="Discord" />
               </div>
             </div>
 
@@ -101,14 +107,14 @@ function App() {
           <div className="nav-right desktop-only">
             <div className="nav-actions">
               <div className="cart" onClick={handleCartClick}>
-                <i className="fa fa-shopping-cart"></i>
+                <i className="fa fa-shopping-basket"></i>
               </div>
               <div className="profile" onClick={handleProfileClick}>
                 <i className="fa fa-user"></i>
               </div>
               <div className="Advertise" onClick={() => window.open(DiscordLink, '_blank', 'noopener,noreferrer')}>
                 <text>Join Discord</text>
-                <img src="/Discord.webp" className="discordLogo"></img>
+                <img src="/Discord_White.webp" className="discordLogo"></img>
               </div>
             </div>
           </div>
@@ -132,7 +138,7 @@ function App() {
                 <img src="/hooskyBrand.png" className="logo" alt="Logo"></img>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
                 <div className="footer-advertise">
-                    <img src="/Discord_White.webp" className="discordLogo"></img>
+                    <img src="/Discord.webp" className="discordLogo"></img>
                     <text>Discord Server</text>
                 </div>
             </div>

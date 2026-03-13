@@ -3,12 +3,12 @@
 body { margin: 0; color:#fff; font-family: 'Inter', sans-serif; min-height: 100vh;}
 
 ::selection {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(181, 42, 53, 0.6);
   color: #fff;
 }
 
 ::-moz-selection {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(181, 42, 53, 0.6);
   color: #fff;
 }
 
@@ -28,10 +28,12 @@ html, body {
   padding: 0;
   text-align: left;
 
-  --nav-background-color: #ffffff;
-  --nav-border-color: #c4c4c4;
-  --selected-text-color: #000;
-  --navandfootercolor: 255, 255, 255;
+  --nav-background-color: rgba(181, 42, 53, 0.12);
+  --nav-border-color: rgba(181, 42, 53, 0.3);
+  --selected-text-color: #fff;
+  --dropdown-text-color: #fff;
+  --footer-drop-shadow: #B52A35;
+  --navandfootercolor: 181, 42, 53;
 }
 
 .hamburger {
@@ -155,7 +157,7 @@ html, body {
     width: 42px !important;
     padding: 0 !important;
     justify-content: center !important;
-    border-radius: 50% !important;
+    border-radius: 8px !important;
   }
 
   .Advertise .discordLogo {
@@ -174,26 +176,27 @@ html, body {
 .bg-black-red {
   min-height: 100vh;
   width: 100%;
+  background-color: #000;
   background:
     radial-gradient(
       1500px 300px at 50% 0%,
-      rgba(60, 120, 255, 0.35),
+      rgba(181, 42, 53, 0.35),
       transparent 60%
     ),
     radial-gradient(
       1000px 900px at 0% 100%,
-      rgba(40, 90, 220, 0.30),
+      rgba(181, 42, 53, 0.30),
       transparent 55%
     ),
     radial-gradient(
       1000px 900px at 100% 100%,
-      rgba(30, 80, 200, 0.28),
+      rgba(181, 42, 53, 0.28),
       transparent 55%
     ),
     linear-gradient(
       180deg,
-      #020202 0%,
-      #060606 100%
+      #000 90%,
+      #000 100%
     );
 }
 
@@ -201,11 +204,12 @@ html, body {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('/Bg2.png');
+  
+  /* background-image: url('/Bg2.png'); */
   background-size: cover;
   background-position: center;
   opacity: 0.5;
-  filter: grayscale(100%) contrast(120%);
+  /* filter: grayscale(100%) contrast(120%); */
   pointer-events: none;
 }
 
@@ -251,11 +255,51 @@ html, body {
 .nav-left { 
   align-items: center;
   width: 250px;
+  height: 40px;
+  display: flex;
+  gap: 10px;
 }
 
-.nav-left .logo {
-  margin: 0;
+.BrandLogo {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background-color: var(--nav-background-color);
+  border: 1.5px solid var(--nav-border-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.BrandLogo img {
+  height: 30px;
+  width: 30px;
+}
+
+.BrandTitles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+}
+
+.BrandTitles p {
+  margin: 0;
+  line-height: 1.2;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.BrandTitles p:last-child {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+}
+
+/* .nav-left .logo {
+  margin: 0;
+} */
 
 .nav-center { 
   display: flex;
@@ -299,6 +343,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .footerContainer {
@@ -314,7 +359,7 @@ html, body {
 }
 
 .footer hr {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(181, 42, 53, 0.4);
   width: 70%;
   border: 0;
   height: 1px;
@@ -340,6 +385,8 @@ html, body {
   box-sizing: border-box;
   margin: 0 auto;
   text-align: left;
+  filter: drop-shadow(0px 0px 10px var(--footer-drop-shadow));
+  
 }
 
 .footer-mid {
@@ -430,7 +477,7 @@ footer::before {
 }
 
 .footer-advertise {
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: var(--nav-background-color);
   color: white;
   height: 40px;
   width: 170px;
@@ -438,10 +485,10 @@ footer::before {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  border-radius: 100px;
+  border-radius: 8px;
   cursor: pointer;
   border-style: solid;
-  border-color: rgb(48, 48, 48);
+  border-color: var(--nav-border-color);
   border-width: 2.5px;
   transition: transform 0.3s ease
 }
@@ -460,24 +507,20 @@ footer::before {
   transform: translateY(-3.5px);
 }
 
-.footer-advertise:hover {
-  border-color: var(--nav-background-color);
-}
-
 /* SHOPPING CART STYLE */
 .cart, .profile {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  background: #1f1f1f;
+  border-radius: 8px;
+  background: #181818;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: background 0.2s ease;
-  border-color: #474747;
+  border-color: #262626;
   border-style: solid;
-  border-width: 1.5px;
+  border-width: 2px;
 
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s ease;
 }
@@ -497,13 +540,13 @@ footer::before {
 .Advertise {
   background-color: var(--nav-background-color);
   color: var(--selected-text-color);
-  height: 36px;
+  height: 40px;
   width: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  border-radius: 100px;
+  border-radius: 8px;
   cursor: pointer;
   border-style: solid;
   border-color: var(--nav-border-color);
@@ -553,7 +596,7 @@ footer::before {
   height: 0;
   opacity: 0;
   transition: all 0.2s ease;
-  border: 2px solid var(--nav-border-color);
+  border: 2px solid rgba(181, 42, 53, 0.8);
 }
 
 .nav-center a:not(.selected)::before {
@@ -584,8 +627,8 @@ footer::before {
 
 .nav-center a.selected {
   background-color: var(--nav-background-color);
-  border-radius: 50px;
-  border: 2.5px solid var(--nav-border-color);
+  border-radius: 8px;
+  border: 2px solid var(--nav-border-color);
   border-style: solid;
   transition: transform 0.2s ease;
   color: var(--selected-text-color);
@@ -601,7 +644,7 @@ footer::before {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
@@ -682,7 +725,7 @@ h1, p, span {
   background-color: var(--nav-background-color);
   border: 2px solid var(--nav-border-color);
   align-items: center;
-  animation: dropdownFadeIn 0.3s ease forwards;
+  animation: dropdownFadeIn 0.3s ease forwards;  
 }
 
 .dropdown-menu a {
@@ -692,5 +735,5 @@ h1, p, span {
   font-size: 14px !important;
   background: transparent !important;
   border: none !important;
-  color: #000 !important;
+  color: var(--dropdown-text-color) !important;
 }
