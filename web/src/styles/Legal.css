@@ -53,7 +53,7 @@ a, a:visited, a:hover, a:active {
     width: 70%;
     min-height: 1060px;
     height: auto;
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: var(--nav-background-color);
     border: 1px solid var(--nav-border-color);
     border-radius: 10px;
     margin: 0 auto;
@@ -62,6 +62,7 @@ a, a:visited, a:hover, a:active {
 
     text-align: left;
     padding: 40px;
+    padding-top: 30px;
 }
 
 .legal-conditions-container h4, h5 {

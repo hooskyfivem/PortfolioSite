@@ -10,26 +10,6 @@ const Products = () => {
             <div className="page-container">
                 <h1>Our Products</h1>
                 <div className="product-list">
-                    {/* <div className="Product">
-                        <div className="ProductInformation">
-                            <div className="ProductImage">
-                                <img src="/Discord_White.webp" className="discordLogo"></img>
-                            </div>
-                            <div className="ProductTitleGroup">
-                                <p className="ProductTitle">Example Product</p>
-                                <p className="ProductPrice">$399.99</p>
-                            </div>
-                        </div>
-                        <a className="ProductDescription">Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet consectetur adipiscing elit quisque faucibus ex. Adipiscing elit quisque faucibus ex sapien vitae pellentesque.</a>
-                        <div className="ProductButtons">
-                            <div className="FeaturesButton">
-                                <p>View Additional Features</p>
-                            </div>
-                            <div className="BuyButton">
-                                <i className="fa fa-shopping-basket"></i>
-                            </div>
-                        </div>
-                    </div> */}
                     <div className="Product">
                         <div className="ProductInformation">
                             <div className="ProductImage">
