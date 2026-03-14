@@ -1,5 +1,5 @@
 import '../../styles/AccountCreation.css';
-import { useState, type Dispatch, type SetStateAction } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
 
