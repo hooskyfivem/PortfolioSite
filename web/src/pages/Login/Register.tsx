@@ -11,23 +11,54 @@ interface RegisterProps {
 
 const Register = ({ setIsLoggedIn }: RegisterProps) => {
     const navigate = useNavigate();
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     
 
     const handleRegister = async () => {
-        const { error } = await supabase.auth.signUp({
+        setError('');
+
+        if (!username) {
+            setError("Username is required.");
+            return;
+        }
+        if (!email) {
+            setError("Email is required.")
+            return;
+        }
+        if (!password) {
+            setError("Password is required")
+            return;
+        }
+        if (password.length < 6) {
+            setError("Password must be at least 6 characters.");
+            return;
+        }
+
+        const { data, error } = await supabase.auth.signUp({
             email: email,
             password: password,
+            options: {
+                data: {
+                    username: username,
+                }
+            }
         });
 
         if (error) {
             setError(error.message);
-        } else {
-            setIsLoggedIn(true);
-            navigate('/');
+            return;
+        } 
+        
+        if (data.user && data.user.identities && data.user.identities.length === 0) {
+            setError("An account with this email already exists.")
+            return;
         }
+
+        setIsLoggedIn(true);
+        navigate('/');
     };
 
     return (
@@ -36,7 +67,7 @@ const Register = ({ setIsLoggedIn }: RegisterProps) => {
         <meta name="description" content="Register" />
         <div className="login-page-wrapper">
             <div className="page-container">
-                <div className="login-container">
+                <div className="login-container register-container">
                     <div className="left-container">
                         <div className="brandContainer">
                             <div className="logoContainer">
@@ -52,14 +83,18 @@ const Register = ({ setIsLoggedIn }: RegisterProps) => {
                         <h2>Register Account</h2>
                         <p className="subtitle">Register a new account</p>
                         <div className="input-group">
-                            <label>Email</label>
+                            <label>Username <span style={{color: '#e06070'}}>*</span></label>
+                            <input type="username" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
+                        </div>
+                        <div className="input-group">
+                            <label>Email <span style={{color: '#e06070'}}>*</span></label>
                             <input type="email" placeholder="you@email.com" value={email} onChange={e => setEmail(e.target.value)} />
                         </div>
                         <div className="input-group">
-                            <label>Password</label>
+                            <label>Password <span style={{color: '#e06070'}}>*</span> <span style={{ float: 'right', color: password.length >= 6 ? '#4CAF50' : '#e06070' }}>{password.length}/6</span></label>
                             <input type="password" placeholder="••••••••" value={password} onChange={e => setPassword(e.target.value)}/>
                         </div>
-                        {error && <p style={{ color: '#e06070', fontSize: '12px' }}>{error}</p>}
+                        <p className="error-message">{error}</p>
                         <button className="login-btn" onClick={handleRegister}>Register</button>
                         <p className="bottom-link">Already have an account? <span onClick={() => navigate('/login')}>Login</span></p>
                     </div>

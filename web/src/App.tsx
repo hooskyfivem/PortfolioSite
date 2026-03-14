@@ -11,16 +11,18 @@ import Refund from './pages/Legal/Refund';
 import Privacy from './pages/Legal/Privacy';
 import Login from './pages/Login/Login';
 import Register from './pages/Login/Register';
+import ResetPassword from './pages/Login/ResetPassword';
+import UpdatePassword from './pages/Login/UpdatePassword';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { supabase } from './supabaseClient';
 
 function App() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
   const [isLegalOpen, setIsLegalOpen] = useState(false);
-  const DiscordLink = 'https://discord.gg/Djmndes9';
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const DiscordLink = 'https://discord.gg/7zqTJ4FGcc';
+  const location = useLocation();
 
   useEffect(() => {
     const remembered = localStorage.getItem('rememberMe') === 'true';
@@ -56,13 +58,15 @@ function App() {
     }
   }
 
-  if (location.pathname === '/login' || location.pathname === '/register') {
+  if (location.pathname === '/login' || location.pathname === '/register' || location.pathname === "/resetpassword" || location.pathname === "/updatepassword") {
     return (
       <div className="bg-black-red">
         <BackgroundParticles />
         <Routes>
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="/updatepassword" element={<UpdatePassword />} />
         </Routes>
       </div>
     )

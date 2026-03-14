@@ -1,6 +1,6 @@
 // import React from 'react';
 // import { useState } from 'react';
-import { type Dispatch, type SetStateAction } from 'react';
+import { useState, useEffect, type Dispatch, type SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 
@@ -10,6 +10,15 @@ interface ProfileProps {
 
 const Profile = ({ setIsLoggedIn }: ProfileProps) => {
     const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+
+    useEffect(() => {
+        supabase.auth.getUser().then(({ data }) => {
+            if (data.user) {
+                setUsername(data.user.user_metadata?.username || '');
+            }
+        });
+    }, [])
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
@@ -23,7 +32,7 @@ const Profile = ({ setIsLoggedIn }: ProfileProps) => {
         <title>Profile - Hoosky Services</title>
         <meta name="description" content="Profile" />
         <div className="page-container">
-            <h1> Welcome to your profile </h1>
+            <h1> Welcome to your profile, {username}</h1>
             <button onClick={handleLogout}>Logout</button>
         </div>
         </>
