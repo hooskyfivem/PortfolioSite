@@ -4,7 +4,7 @@ import '../styles/Products.css';
 const Products = () => {
     return (
         <>
-        <title>Products - Hoosky Services</title>
+        <title>Products - Telvion Systems</title>
         <meta name="description" content="Products" />
         <div className="page-wrapper">
             <div className="page-container">

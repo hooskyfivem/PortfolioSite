@@ -2,10 +2,16 @@ import { useEffect, useRef } from 'react';
 
 const BackgroundParticles = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const Amount = 60;
   const Size = 2;
   const Speed = 0.2;
   const Opacity = 6;
+
+  const getAmount = () => {
+    if (window.innerWidth < 480) return 15;
+    if (window.innerWidth < 769) return 20;
+    if (window.innerWidth < 1200) return 40;
+    return 50;
+  }
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -19,6 +25,10 @@ const BackgroundParticles = () => {
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      particles = [];
+      for (let i = 0; i < getAmount(); i++) {
+        particles.push(new Particle());
+      }
     };
 
     class Particle {
@@ -41,7 +51,9 @@ const BackgroundParticles = () => {
 
       draw() {
         if (!ctx) return;
-        ctx.fillStyle = `rgba(180, 1, 1, ${this.opacity})`;
+        ctx.fillStyle = `rgba(124, 58, 237, ${this.opacity})`;
+        // Red Particles
+        // ctx.fillStyle = `rgba(180, 1, 1, ${this.opacity})`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -50,7 +62,7 @@ const BackgroundParticles = () => {
 
     const init = () => {
       particles = [];
-      for (let i = 0; i < Amount; i++) {
+      for (let i = 0; i < getAmount(); i++) {
         particles.push(new Particle());
       }
     };

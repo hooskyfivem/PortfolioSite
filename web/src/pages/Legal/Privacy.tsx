@@ -6,18 +6,18 @@ const Privacy: React.FC = () => {
     const navigate = useNavigate();
     return (
         <>
-        <title>Privacy Policy - Hoosky</title>
+        <title>Privacy Policy - Telvion</title>
         <meta name="description" content="Privacy Policy" />
         <div className="legal-page-wrapper">
             <div className="legal-page-container">
                 <a className="homeNavigation" onClick={() => {navigate('/')}}>Home <i className={'fa fa-chevron-right'}></i></a>
-                <h1>Privacy Policy</h1>
+                <h1 className="MainLegalTitle">Privacy Policy</h1>
                 <div className="legal-conditions-container">
-                    <h4 className="legal-description">This Privacy Policy explains how Hoosky Services ("we", "our", "us") collects, uses, stores, and protects customer information when using our website and services.</h4>
+                    <h4 className="legal-description">This Privacy Policy explains how Telvion Systems ("we", "our", "us") collects, uses, stores, and protects customer information when using our website and services.</h4>
                     
                     <div className="term-item">
                         <h4 className="legal-title">1. Information We Collect</h4>
-                        <h4 className="legal-description">We may collect the following types of data when you access or interact with Hoosky Services:.</h4>
+                        <h4 className="legal-description">We may collect the following types of data when you access or interact with Telvion Systems:.</h4>
                         <ul>
                             <li>
                                 <p className="legal-description">
@@ -26,7 +26,7 @@ const Privacy: React.FC = () => {
                             </li>
                             <li>
                                 <p className="legal-description">
-                                    <span className="description-label">Payment Information:</span> Transaction details such as payment method, transaction ID, and billing information (processed securely by third-party payment processors; Hoosky Services does not store full payment credentials).
+                                    <span className="description-label">Payment Information:</span> Transaction details such as payment method, transaction ID, and billing information (processed securely by third-party payment processors; Telvion Systems does not store full payment credentials).
                                 </p>
                             </li>
                             <li>
@@ -64,7 +64,7 @@ const Privacy: React.FC = () => {
                     </div>
                     <div className="term-item">
                         <h4 className="legal-title">3. Data Protection & Security</h4>
-                        <h4 className="legal-description">We take the protection of your data seriously. Hoosky Services implements security measures to prevent:</h4>
+                        <h4 className="legal-description">We take the protection of your data seriously. Telvion Systems implements security measures to prevent:</h4>
                         <ul>
                             <li>
                                 <p className="legal-description">Unauthorized access</p>
@@ -76,7 +76,7 @@ const Privacy: React.FC = () => {
                                 <p className="legal-description">Disclosure or destruction of personal information</p>
                             </li>
                         </ul>
-                        <h4 className="legal-description">Payment processing is handled through secure, trusted third-party providers. Hoosky Services never stores sensitive payment details such as full credit card numbers.</h4>
+                        <h4 className="legal-description">Payment processing is handled through secure, trusted third-party providers. Telvion Systems never stores sensitive payment details such as full credit card numbers.</h4>
                     </div>
                     <div className="term-item">
                         <h4 className="legal-title">4. Sharing of Information</h4>
@@ -99,7 +99,7 @@ const Privacy: React.FC = () => {
                     </div>
                     <div className="term-item">
                         <h4 className="legal-title">5. Cookies & Tracking Technologies</h4>
-                        <h4 className="legal-description">Hoosky Services may use cookies or similar technologies to:</h4>
+                        <h4 className="legal-description">Telvion Systems may use cookies or similar technologies to:</h4>
                         <ul>
                             <li>
                                 <p className="legal-description">Improve user experience</p>
@@ -147,7 +147,7 @@ const Privacy: React.FC = () => {
                     </div>
                     <div className="term-item">
                         <h4 className="legal-title">8. Changes To This Policy</h4>
-                        <h4 className="legal-description">Hoosky Services may update this Privacy Policy from time to time. Any changes will be posted on this page, and continued use of our services indicates acceptance of the updated terms.</h4>
+                        <h4 className="legal-description">Telvion Systems may update this Privacy Policy from time to time. Any changes will be posted on this page, and continued use of our services indicates acceptance of the updated terms.</h4>
                     </div>
                     <div className="term-item">
                         <h4 className="legal-title">9. Contact Information</h4>
@@ -156,7 +156,7 @@ const Privacy: React.FC = () => {
 
                     <hr></hr>
                     <div className="term-item-last">
-                        <h4 className="legal-title">By using Hoosky Services, you agree to the collection and use of your information as outlined in this Privacy Policy</h4>
+                        <h4 className="legal-title">By using Telvion Systems, you agree to the collection and use of your information as outlined in this Privacy Policy</h4>
                     </div>
                 </div>
             </div>

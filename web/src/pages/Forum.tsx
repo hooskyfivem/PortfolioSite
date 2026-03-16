@@ -4,7 +4,7 @@
 const Forum = () => {
     return (
         <>
-        <title>Forum - Hoosky Services</title>
+        <title>Forum - Telvion Systems</title>
         <meta name="description" content="Forum" />
         <div className="page-container">
             <h1> Welcome to the forum </h1>

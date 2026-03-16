@@ -4,6 +4,7 @@ import '../../styles/AccountCreation.css';
 import { useState, type Dispatch, type SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
+import config from '../../config';
 
 interface LoginProps {
     setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
@@ -50,21 +51,25 @@ const Login = ({ setIsLoggedIn }: LoginProps) => {
 
     return (
         <>
-        <title>Login - Hoosky Services</title>
+        <title>Login - Telvion Systems</title>
         <meta name="description" content="Login" />
         <div className="login-page-wrapper">
             <div className="page-container">
                 <div className="login-container">
                     <div className="left-container">
+                        <div className="GoBack" onClick={() => navigate('/')}>
+                            <i className="fa-regular fa-square-caret-left"></i>
+                            <p>Home</p>
+                        </div>
                         <div className="brandContainer">
                             <div className="logoContainer">
-                                <img src="hoosky.png"></img>
+                                <img src={config.logo}></img>
                                 {/* <i className="fas fa-layer-group"></i> */}
                             </div>
-                            <p>Hoosky</p>
+                            <p>Telvion</p>
                         </div>
-                        <h2>Trusted developer services</h2>
-                        <p className="servicesdesc">Premium scripts, bots, and digital solutions</p>
+                        <h2>Systems that work. Solutions that scale</h2>
+                        <p className="servicesdesc">Full-stack development with premium digital solutions.</p>
                     </div>
                     <div className="right-container">
                         <h2>Welcome back</h2>

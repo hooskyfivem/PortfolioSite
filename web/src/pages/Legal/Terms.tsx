@@ -10,14 +10,14 @@ const Terms: React.FC = () => {
     const navigate = useNavigate();
     return (
         <>
-        <title>Terms & Conditions - Hoosky</title>
+        <title>Terms & Conditions - Telvion</title>
         <meta name="description" content="Terms & Conditions" />
         <div className="legal-page-wrapper">
             <div className="legal-page-container">
                 <a className="homeNavigation" onClick={() => {navigate('/')}}>Home <i className={'fa fa-chevron-right'}></i></a>
-                <h1>Terms & Conditions</h1>
+                <h1 className="MainLegalTitle">Terms & Conditions</h1>
                 <div className="legal-conditions-container">
-                    <h4 className="legal-description">Welcome to Hoosky Services ("we", "our", "us"). By accessing or using hooskyservices.xyz, you agree to these terms of Service. If you do not agree, please do not use our website or services.</h4>
+                    <h4 className="legal-description">Welcome to Telvion Systems ("we", "our", "us"). By accessing or using hooskyservices.xyz, you agree to these terms of Service. If you do not agree, please do not use our website or services.</h4>
                     
                     <div className="term-item">
                         <h4 className="legal-title">1. USE OF WEBSITE</h4>
@@ -37,7 +37,7 @@ const Terms: React.FC = () => {
                     </div>
                     <div className="term-item">
                         <h4 className="legal-title">5. INTELLECTUAL PROPERTY</h4>
-                        <h4 className="legal-description">All content is owned by Hoosky Services and protected by law.</h4>
+                        <h4 className="legal-description">All content is owned by Telvion Systems and protected by law.</h4>
                     </div>
                     <div className="term-item">
                         <h4 className="legal-title">6. USER ACCOUNTS</h4>
@@ -45,11 +45,11 @@ const Terms: React.FC = () => {
                     </div>
                     <div className="term-item">
                         <h4 className="legal-title">7. LIABILITY LIMITATION</h4>
-                        <h4 className="legal-description">Hoosky Services is not liable for indirect or consequential damages from using our services.</h4>
+                        <h4 className="legal-description">Telvion Systems is not liable for indirect or consequential damages from using our services.</h4>
                     </div>
                     <div className="term-item">
                         <h4 className="legal-title">8. INDEMNIFICATION</h4>
-                        <h4 className="legal-description">You agree to hold Hoosky Services harmless from any claims arising from your violation of these terms.</h4>
+                        <h4 className="legal-description">You agree to hold Telvion Systems harmless from any claims arising from your violation of these terms.</h4>
                     </div>
                     <div className="term-item">
                         <h4 className="legal-title">9. PRIVACY</h4>
@@ -70,7 +70,7 @@ const Terms: React.FC = () => {
                     </div>
                     <hr></hr>
                     <div className="term-item-last">
-                        <h4 className="legal-title">Thank you for trusting Hoosky Services!</h4>
+                        <h4 className="legal-title">Thank you for trusting Telvion Systems!</h4>
                     </div>
                 </div>
             </div>

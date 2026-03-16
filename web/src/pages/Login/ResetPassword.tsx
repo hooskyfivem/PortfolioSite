@@ -2,6 +2,7 @@ import '../../styles/AccountCreation.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
+import config from '../../config';
 
 const ResetPassword = () => {
     const navigate = useNavigate();
@@ -19,8 +20,7 @@ const ResetPassword = () => {
         }
 
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: 'https://hooskyservices.xyz/updatepassword',
-            // redirectTo: window.location.origin + '/updatepassword',
+            redirectTo: config.redirectResetBrowser,
         });
 
         if (error) {
@@ -33,15 +33,15 @@ const ResetPassword = () => {
 
     return (
         <>
-        <title>Support - Hoosky Services</title>
+        <title>Support - Telvion Systems</title>
         <meta name="description" content="ResetPassword" />
         <div className="login-page-wrapper">
             <div className="page-container">
-                <div className="support-container" style={{ height: 'auto' }}>
-                    <div className="right-container" style={{ borderRadius: '8px', borderLeft: '2px solid #1B1B1B' }}>
+                <div className="support-container">
+                    <div className="reset-right-container">
                         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
                         <div className="logoContainer">
-                            <img src="hoosky.png" />
+                            <img src={config.logo} />
                             {/* <i className="fas fa-layer-group"></i> */}
                         </div>
                     </div>

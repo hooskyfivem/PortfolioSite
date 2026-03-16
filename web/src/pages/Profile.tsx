@@ -29,7 +29,7 @@ const Profile = ({ setIsLoggedIn }: ProfileProps) => {
 
     return (
         <>
-        <title>Profile - Hoosky Services</title>
+        <title>Profile - Telvion Systems</title>
         <meta name="description" content="Profile" />
         <div className="page-container">
             <h1> Welcome to your profile, {username}</h1>

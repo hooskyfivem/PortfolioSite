@@ -1,0 +1,204 @@
+.PageContainer {
+    width: 100%;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    color: var(--page-container-color);
+    animation: fadeIn 0.5s ease;
+    align-items: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.IntroductionContainer {
+    min-height: 380px; /* 460px with Badges */
+    height: auto;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 34px;
+    text-align: left;
+}
+
+.Title {
+    color: #7c3aed;
+    font-weight: 510;
+    font-size: 20px;
+}
+
+.TaglineContainer h1 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.TaglineContainer .TaglineTitle {
+    color: #0f172a;
+}
+
+.TaglineContainer .TaglineUndertitle {
+    color: #7c3aed;
+}
+
+.PurposeText {
+    color: #475569;
+    font-weight: 510;
+    font-size: 20px;
+}
+
+/* Introduction Badges */
+.IntroductionBadgesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.IntroductionBadge {
+    font-size: 14px;
+    background: var(--product-badge-background);
+    color: var(--product-badge-color);
+    border: 0.5px solid var(--product-badge-border);
+    border-radius: 20px;
+    padding: 2px 10px;
+    width: fit-content;
+}
+
+.IntroductionDirectoryButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    /* margin-top: 22px; */
+}
+
+.DirectoryButton {
+    font-size: 18px;
+    font-weight: bold;
+    background: none;
+    color: rgb(0, 0, 0, 0.5);
+    border: 2.5px solid rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease
+}
+
+.DirectoryButton:hover {
+    transform: translateY(-8px);
+}
+
+/* Services Container */
+.ServicesContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.ServicesContainer h1 {
+    color: #0f172a;
+    margin-bottom: 30px;
+}
+
+.ServicesContainerGroup {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.ServicesContainerGroup .Service {
+    width: 220px;
+    background: #fff;
+    border: 0.5px solid #e2e8f0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 20px;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 10px 5px rgba(124, 58, 237, 0.4);
+}
+
+.ServicesContainerGroup .Service:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(124, 58, 237, 0.4);
+    border-color: rgba(124, 58, 237, 0.4);
+}
+
+.ServicesContainerGroup .Service .ServicesLogo {
+    width: 44px;
+    height: 44px;
+    background: #f5f3ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ServicesContainerGroup .Service .ServicesLogo i {
+    color: #7c3aed;
+    font-size: 18px;
+}
+
+.ServicesContainerGroup .Service .ServiceName {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0f172a;
+    margin: 0;
+}
+
+.ServicesContainerGroup .Service .ServiceDescription {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 1;
+}
+
+.ServicesLearnMore {
+    font-size: 13px;
+    color: #7c3aed;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Media */
+@media (max-width: 768px) {
+    .IntroductionContainer {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .TaglineContainer h1 {
+        font-size: 36px;
+    }
+
+    .PurposeText {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .IntroductionContainer {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 1600px) and (min-width: 1000px) {
+    .IntroductionContainer {
+        width: 70%;
+    }
+}

@@ -2,6 +2,7 @@ import '../../styles/AccountCreation.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
+import config from '../../config';
 
 const UpdatePassword = () => {
     const navigate = useNavigate();
@@ -38,19 +39,19 @@ const UpdatePassword = () => {
 
     return (
         <>
-        <title>Support - Hoosky Services</title>
+        <title>Support - Telvion Systems</title>
         <meta name="description" content="ResetPassword" />
         <div className="login-page-wrapper">
             <div className="page-container">
-                <div className="support-container" style={{ height: 'auto' }}>
-                    <div className="right-container" style={{ borderRadius: '8px', borderLeft: '2px solid #1B1B1B' }}>
+                <div className="support-container"> {/* style={{ height: 'auto' }} */}
+                    <div className="reset-right-container">
                         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
                         <div className="logoContainer">
-                            <img src="hoosky.png" />
+                            <img src={config.logo} />
                         </div>
                     </div>
                     <h2 style={{ textAlign: 'center' }}>Reset Password</h2>
-                    <p className="subtitle" style={{ textAlign: 'center' }}>Enter your email to receive a reset link</p>
+                    <p className="subtitle" style={{ textAlign: 'center' }}>Enter your new password</p>
                     <p className="error-message">{error}</p>
                     {success && <p style={{ color: '#4CAF50', fontSize: '12px', margin: 0 }}>{success}</p>}
                     <div className="input-group">
