@@ -72,6 +72,7 @@ a, a:visited, a:hover, a:active {
     text-align: left;
     padding: 40px;
     padding-top: 30px;
+    margin-bottom: 30px;
 }
 
 .legal-conditions-container h4, h5 {
@@ -146,6 +147,38 @@ li {
 li p.legal-description {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.BackToTheTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 30px;
+    gap: 10px;
+    margin: 20px auto 0 auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.BackToTheTop:hover {
+    transform: translateY(-4px);
+}
+
+.BackToTheTop i {
+    width: 30px;
+    height: 30px;
+    background: var(--nav-background-color);
+    color: var(--legal-home-navigation-color);
+    border: 2.5px solid var(--nav-border-color);
+    border-radius: 8px;
+    align-content: center;
+    font-size: 14px;
+}
+
+.BackToTheTop span {
+    color: var(--legal-home-navigation-color);
+    font-weight: bold;
 }
 
 @media (max-width: 768px) {

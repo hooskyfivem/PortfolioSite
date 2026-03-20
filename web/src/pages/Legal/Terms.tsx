@@ -8,13 +8,38 @@ import { useNavigate } from 'react-router-dom';
 
 const Terms: React.FC = () => {
     const navigate = useNavigate();
+
+    const NavigateTo = (path: string) => {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        navigate(path);
+    }
+
+    const ScrollToTop = () => {
+      const start = document.documentElement.scrollTop || document.body.scrollTop;
+      const duration = 500;
+      const startTime = performance.now();
+
+      const scroll = (currentTime: number) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          const scrollTop = start * (1 - ease);
+          document.documentElement.scrollTop = scrollTop;
+          document.body.scrollTop = scrollTop;
+          if (progress < 1) requestAnimationFrame(scroll);
+      };
+
+      requestAnimationFrame(scroll);
+    }
+
     return (
         <>
         <title>Terms & Conditions - Telvion</title>
         <meta name="description" content="Terms & Conditions" />
         <div className="legal-page-wrapper">
             <div className="legal-page-container">
-                <a className="homeNavigation" onClick={() => {navigate('/')}}>Home <i className={'fa fa-chevron-right'}></i></a>
+                <a className="homeNavigation" onClick={() => {NavigateTo('/')}}>Home <i className={'fa fa-chevron-right'}></i></a>
                 <h1 className="MainLegalTitle">Terms & Conditions</h1>
                 <div className="legal-conditions-container">
                     <h4 className="legal-description">Welcome to Telvion Systems ("we", "our", "us"). By accessing or using hooskyservices.xyz, you agree to these terms of Service. If you do not agree, please do not use our website or services.</h4>
@@ -72,6 +97,10 @@ const Terms: React.FC = () => {
                     <div className="term-item-last">
                         <h4 className="legal-title">Thank you for trusting Telvion Systems!</h4>
                     </div>
+                </div>
+                <div className="BackToTheTop" onClick={() => ScrollToTop()}>
+                    <i className="fas fa-arrow-turn-up"></i>
+                    <span>Back to the top</span>
                 </div>
             </div>
         </div>

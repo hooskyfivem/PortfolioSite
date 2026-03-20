@@ -8,13 +8,38 @@ import { useNavigate } from 'react-router-dom';
 
 const Refund: React.FC = () => {
     const navigate = useNavigate();
+
+    const NavigateTo = (path: string) => {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        navigate(path);
+    }
+
+    const ScrollToTop = () => {
+      const start = document.documentElement.scrollTop || document.body.scrollTop;
+      const duration = 500;
+      const startTime = performance.now();
+
+      const scroll = (currentTime: number) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          const scrollTop = start * (1 - ease);
+          document.documentElement.scrollTop = scrollTop;
+          document.body.scrollTop = scrollTop;
+          if (progress < 1) requestAnimationFrame(scroll);
+      };
+
+      requestAnimationFrame(scroll);
+    }
+
     return (
         <>
         <title>Refund Policy - Telvion</title>
         <meta name="description" content="Refund Policy" />
         <div className="legal-page-wrapper">
             <div className="legal-page-container">
-                <a className="homeNavigation" onClick={() => {navigate('/')}}>Home <i className={'fa fa-chevron-right'}></i></a>
+                <a className="homeNavigation" onClick={() => {NavigateTo('/')}}>Home <i className={'fa fa-chevron-right'}></i></a>
                 <h1 className="MainLegalTitle">Refund Policy</h1>
                 <div className="legal-conditions-container">
                     <h4 className="legal-description">Welcome to Telvion Systems ("we," "our," "us"). By accessing or using hooskyservices.xyz, you agree to these terms of Service. If you do not agree, please do not use our website or services.</h4>
@@ -69,6 +94,10 @@ const Refund: React.FC = () => {
                         <h4 className="legal-title">9. Acknolwedgement</h4>
                         <h4 className="legal-description">By making a purchase, you explicitly agree to all of the Terms outlined above, including the No Refunds Policy. You understand that all sales are final, and you waive any right to dispute or request reimbursement for purchased products.</h4>
                     </div>
+                </div>
+                <div className="BackToTheTop" onClick={() => ScrollToTop()}>
+                    <i className="fas fa-arrow-turn-up"></i>
+                    <span>Back to the top</span>
                 </div>
             </div>
         </div>

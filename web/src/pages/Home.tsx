@@ -1,8 +1,61 @@
 // import React from 'react';
 // import { useState } from 'react'
 import styles from '../styles/Home.module.css';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Home = () => {
+    const navigate = useNavigate();
+
+    const NavigateTo = (path: string) => {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        navigate(path);
+    }
+
+    const testimonials = [
+        {
+            stars: '★★★★★',
+            description: '"Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus."',
+            initials: 'JD',
+            name: 'John D.',
+            title: 'Bot Developer',
+        },
+        {
+            stars: '★★★★',
+            description: '"Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus."',
+            initials: 'JD',
+            name: 'John D.',
+            title: 'Bot Developer',
+        },
+        {
+            stars: '★★★',
+            description: '"Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus."',
+            initials: 'JD',
+            name: 'John D.',
+            title: 'Bot Developer',
+        },
+        {
+            stars: '★★',
+            description: '"Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus."',
+            initials: 'JD',
+            name: 'John D.',
+            title: 'Bot Developer',
+        },
+        {
+            stars: '★',
+            description: '"Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus."',
+            initials: 'JD',
+            name: 'John D.',
+            title: 'Bot Developer',
+        },
+    ]
+    const max_testimonials = 3;
+    const [current, setCurrent] = useState(0);
+    const prev = () => setCurrent(i => Math.max(0, i - 1));
+    const next = () => setCurrent(i => Math.min(testimonials.length - max_testimonials, i + 1));
+    const visible = testimonials.slice(current, current + max_testimonials);
+
     return (
         <>
         <title>Home - Telvion Systems</title>
@@ -29,32 +82,180 @@ const Home = () => {
             <div className={styles.ServicesContainer}>
                 <h1>What We Offer</h1>
                 <div className={styles.ServicesContainerGroup}>
-                    <div className={styles.Service} onClick={() => {document.documentElement.scrollTop = 0; document.body.scrollTop = 0;}}>
+                    <div className={styles.Service}>
                         <div className={styles.ServicesLogo}><i className="fas fa-columns"></i></div>
                         <p className={styles.ServiceName}>Web Apps</p>
                         <p className={styles.ServiceDescription}>Custom web applications built for performance and scale</p>
-                        <span className={styles.ServicesLearnMore}>Learn More <i className="fas fa-arrow-right"></i></span>
+                        {/* <span className={styles.ServicesLearnMore}>Learn More <i className="fas fa-arrow-right"></i></span> */}
                     </div>
-                    <div className={styles.Service} onClick={() => {document.documentElement.scrollTop = 0; document.body.scrollTop = 0;}}>
+                    <div className={styles.Service}>
                         <div className={styles.ServicesLogo}><i className="fas fa-cloud"></i></div>
                         <p className={styles.ServiceName}>Cloud Hosting</p>
                         <p className={styles.ServiceDescription}>Reliable, fast hosting with 99.9% uptime guarantee.</p>
-                        <span className={styles.ServicesLearnMore}>Learn More <i className="fas fa-arrow-right"></i></span>
+                        {/* <span className={styles.ServicesLearnMore}>Learn More <i className="fas fa-arrow-right"></i></span> */}
                     </div>
-                    <div className={styles.Service} onClick={() => {document.documentElement.scrollTop = 0; document.body.scrollTop = 0;}}>
+                    <div className={styles.Service}>
                         <div className={styles.ServicesLogo}><i className="fas fa-layer-group"></i></div>
                         <p className={styles.ServiceName}>Automation</p>
                         <p className={styles.ServiceDescription}>Automate repetitive tasks, workflows, and processed with custom built, and reliable solutions.</p>
-                        <span className={styles.ServicesLearnMore}>Learn More <i className="fas fa-arrow-right"></i></span>
+                        {/* <span className={styles.ServicesLearnMore}>Learn More <i className="fas fa-arrow-right"></i></span> */}
                     </div>
-                    <div className={styles.Service} onClick={() => {document.documentElement.scrollTop = 0; document.body.scrollTop = 0;}}>
+                    <div className={styles.Service}>
                         <div className={styles.ServicesLogo}><i className="fas fa-code"></i></div>
                         <p className={styles.ServiceName}>Custom Software</p>
                         <p className={styles.ServiceDescription}>Tailored software solutions to fit all of your business needs.</p>
-                        <span className={styles.ServicesLearnMore}>Learn More <i className="fas fa-arrow-right"></i></span>
+                        {/* <span className={styles.ServicesLearnMore}>Learn More <i className="fas fa-arrow-right"></i></span> */}
                     </div>
                 </div>
             </div>
+
+            {/* Stats Bar */}
+
+            <div className={styles.StatsBarContainer}>
+                <div className={styles.StatsBar}>
+                    <div className={styles.ClientCount}>
+                        <p>50+</p>
+                        <p>Happy clients</p>
+                    </div>
+                    <div className={styles.UptimeGuarantee}>
+                        <p>99.9%</p>
+                        <p>Uptime guarantee</p>
+                    </div>
+                    <div className={styles.SupportAvailable}>
+                        <p>24/7</p>
+                        <p>Support available</p>
+                    </div>
+                    <div className={styles.ProductsBought}>
+                        <p>10+</p>
+                        <p>Products bought</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Top Products */}
+
+            <div className={styles.SectionContainer}>
+                <div className={styles.SectionHeader}>
+                    <span className={styles.HeaderTextOne}>OUR TOP PRODUCTS</span>
+                    <span className={styles.HeaderTextTwo}>Built for reliability</span>
+                    <span className={styles.HeaderTextThree}>Premium digital products ready to deploy</span>
+                </div>
+                <div className={styles.TopProductsLayout}>
+                    <div className={styles.Product}>
+                        <div className={styles.ProductInformation}>
+                            <div className={styles.ProductImage}>
+                            <img src="/react.svg" alt={styles.product} />
+                            </div>
+                            <div className={styles.ProductTitleGroup}>
+                            <p className={styles.ProductTitle}>Example Product</p>
+                            <p className={styles.ProductPrice}>$399.99 / month</p>
+                            </div>
+                        </div>
+                        <div className={styles.ProductBadges}>
+                            <span className={styles.ProductBadge}>Website Service</span>
+                            <span className={styles.ProductBadge}>24/7 Support</span>
+                        </div>
+                        <p className={styles.ProductDescription}>
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet
+                            consectetur.
+                        </p>
+                        <div className={styles.ProductButtons}>
+                            <button className={styles.FeaturesButton}>View Product</button>
+                        </div>
+                    </div>
+
+                    <div className={styles.Product}>
+                        <div className={styles.ProductInformation}>
+                            <div className={styles.ProductImage}>
+                            <img src="/react.svg" alt={styles.product} />
+                            </div>
+                            <div className={styles.ProductTitleGroup}>
+                            <p className={styles.ProductTitle}>Example Product</p>
+                            <p className={styles.ProductPrice}>$399.99 / month</p>
+                            </div>
+                        </div>
+                        <div className={styles.ProductBadges}>
+                            <span className={styles.ProductBadge}>Website Service</span>
+                            <span className={styles.ProductBadge}>24/7 Support</span>
+                        </div>
+                        <p className={styles.ProductDescription}>
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet
+                            consectetur.
+                        </p>
+                        <div className={styles.ProductButtons}>
+                            <button className={styles.FeaturesButton}>View Product</button>
+                        </div>
+                    </div>
+
+                </div>
+                <span className={styles.ViewAllProducts} onClick={() => NavigateTo('/products')}>View All Products <i className="fas fa-arrow-right"></i></span>
+            </div>
+
+            {/* Testimonials */}
+            <div className={styles.SectionContainer}>
+                <div className={styles.SectionHeader}>
+                    <span className={styles.HeaderTextOne}>TESTIMONIALS</span>
+                    <span className={styles.HeaderTextTwo}>Trusted by clients</span>
+                    <span className={styles.HeaderTextThree}>See what our customers are saying</span>
+                </div>
+                <div className={styles.CarouselWrapper}>
+                    <button className={styles.CarouselBtn} onClick={prev} disabled={current === 0}>‹</button>
+                    <div className={styles.TestimonialsLayout} key={current}>
+                        {visible.map((t, i) => (
+                            <div className={styles.Testimonial} key={i}>
+                                <div className={styles.ServiceStars}>{t.stars}</div>
+                                <p className={styles.TestimonialDescription}>{t.description}</p>
+                                <div className={styles.TestimonialBy}>
+                                    <div className={styles.TestimonialImage}>
+                                        <span>{t.initials}</span>
+                                    </div>
+                                    <div className={styles.TestimonialNames}>
+                                        <span className={styles.TestimonialName}>{t.name}</span>
+                                        <span className={styles.TestimonialTitle}>{t.title}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <button className={styles.CarouselBtn} onClick={next} disabled={current >= testimonials.length - max_testimonials}>›</button>
+                </div>
+                <div className={styles.CarouselDots}>
+                    {Array.from({ length: testimonials.length - max_testimonials + 1 }).map((_, i) => (
+                        <div key={i} className={`${styles.Dot} ${i === current ? styles.DotActive : ''}`} onClick={() => setCurrent(i)} />
+                    ))}
+                </div>
+            </div>
+
+            {/* Blog Posts */}
+            <div className={styles.SectionContainer}>
+                <div className={styles.SectionHeader}>
+                    <span className={styles.HeaderTextOne}>UPDATES</span>
+                    <span className={styles.HeaderTextTwo}>Latest from Telvion</span>
+                    <span className={styles.HeaderTextThree}>Stay up to date with our latest news and releases.</span>
+                </div>
+            </div>
+
+            {/* FAQ */}
+            <div className={styles.SectionContainer}>
+                <div className={styles.SectionHeader}>
+                    <span className={styles.HeaderTextOne}>FAQ</span>
+                    <span className={styles.HeaderTextTwo}>Common questions</span>
+                    <span className={styles.HeaderTextThree}>Everything you need to know about Telvion Systems.</span>
+                </div>
+            </div>
+
+            {/* Ending */}
+            {/* <div className={styles.SectionContainer}>
+                <div className={styles.EndingSectionLayout}>
+                    <span className={styles.EndingTitle}>Ready to get started?</span>
+                    <span className={styles.EndingDesc}>Browse our products</span>
+                    <div className={styles.EndingSectionButton}>
+                        <button>View our Products</button>
+                        <button>View our Hosting</button>
+                    </div>
+                </div>
+            </div> */}
+
         </div>
         </>
     );

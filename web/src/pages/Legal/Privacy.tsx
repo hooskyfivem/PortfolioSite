@@ -4,13 +4,38 @@ import { useNavigate } from 'react-router-dom';
 
 const Privacy: React.FC = () => {
     const navigate = useNavigate();
+
+    const NavigateTo = (path: string) => {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        navigate(path);
+    }
+
+    const ScrollToTop = () => {
+      const start = document.documentElement.scrollTop || document.body.scrollTop;
+      const duration = 500;
+      const startTime = performance.now();
+
+      const scroll = (currentTime: number) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          const scrollTop = start * (1 - ease);
+          document.documentElement.scrollTop = scrollTop;
+          document.body.scrollTop = scrollTop;
+          if (progress < 1) requestAnimationFrame(scroll);
+      };
+
+      requestAnimationFrame(scroll);
+    }
+
     return (
         <>
         <title>Privacy Policy - Telvion</title>
         <meta name="description" content="Privacy Policy" />
         <div className="legal-page-wrapper">
             <div className="legal-page-container">
-                <a className="homeNavigation" onClick={() => {navigate('/')}}>Home <i className={'fa fa-chevron-right'}></i></a>
+                <a className="homeNavigation" onClick={() => {NavigateTo('/')}}>Home <i className={'fa fa-chevron-right'}></i></a>
                 <h1 className="MainLegalTitle">Privacy Policy</h1>
                 <div className="legal-conditions-container">
                     <h4 className="legal-description">This Privacy Policy explains how Telvion Systems ("we", "our", "us") collects, uses, stores, and protects customer information when using our website and services.</h4>
@@ -158,6 +183,10 @@ const Privacy: React.FC = () => {
                     <div className="term-item-last">
                         <h4 className="legal-title">By using Telvion Systems, you agree to the collection and use of your information as outlined in this Privacy Policy</h4>
                     </div>
+                </div>
+                <div className="BackToTheTop" onClick={() => ScrollToTop()}>
+                    <i className="fas fa-arrow-turn-up"></i>
+                    <span>Back to the top</span>
                 </div>
             </div>
         </div>

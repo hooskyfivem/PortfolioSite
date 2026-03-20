@@ -309,6 +309,7 @@
 
     .left-container .GoBack {
         top: -2px;
-        left: 320px;
+        right: 12px;
+        left: auto;
     }
 }

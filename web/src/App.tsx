@@ -63,20 +63,17 @@ function App() {
   }
 
   const handleLegalClick = (path: string) => {
-    navigate(path);
+    NavigateTo(path);
     setIsLegalOpen(false);
-    setIsMenuOpen(false);
   }
 
   const HandleLoginClick = () => {
     if (!isLoggedIn) {
       console.log("Not logged in")
-      navigate('/login')
-      setIsMenuOpen(false);
+      NavigateTo('/login')
     } else {
       console.log("Logged in")
-      navigate('/profile')
-      setIsMenuOpen(false);
+      NavigateTo('/profile')
     }
   }
 
@@ -90,6 +87,33 @@ function App() {
       secondary_button_link: secondaryLink,
     });
     setShowNotification(true);
+  }
+
+  // const ScrollToTop = () => {
+  //     const start = document.documentElement.scrollTop || document.body.scrollTop;
+  //     const duration = 500;
+  //     const startTime = performance.now();
+
+  //     const scroll = (currentTime: number) => {
+  //         const elapsed = currentTime - startTime;
+  //         const progress = Math.min(elapsed / duration, 1);
+  //         const ease = 1 - Math.pow(1 - progress, 3);
+  //         const scrollTop = start * (1 - ease);
+  //         document.documentElement.scrollTop = scrollTop;
+  //         document.body.scrollTop = scrollTop;
+  //         if (progress < 1) requestAnimationFrame(scroll);
+  //     };
+
+  //     requestAnimationFrame(scroll);
+  // }
+
+  const NavigateTo = (path: string) => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    navigate(path);
+    if (setIsMenuOpen) {
+      setIsMenuOpen(false);
+    }
   }
 
   if (location.pathname === '/login' || location.pathname === '/register' || location.pathname === "/resetpassword" || location.pathname === "/updatepassword") {
@@ -126,7 +150,7 @@ function App() {
             <div className="notification-buttons">
               <button className="btn-p" onClick={() => setShowNotification(false)}>{notification.primary_button_text}</button>
               {notification.secondary_button_text && (
-                <button className="btn-s" onClick={() => { setShowNotification(false); navigate(notification.secondary_button_link); }}>{notification.secondary_button_text}</button>
+                <button className="btn-s" onClick={() => { setShowNotification(false); NavigateTo(notification.secondary_button_link); }}>{notification.secondary_button_text}</button>
               )}
             </div>
           </div>
@@ -154,8 +178,9 @@ function App() {
             {/* Center */}
 
             <nav className={`nav-center ${isMenuOpen ? 'open' : ''}`}>
-              <a className={location.pathname === '/' ? 'selected' : ''} onClick={() => {navigate('/'); setIsMenuOpen(false)}}>Home</a>
-              <a className={location.pathname === '/products' ? 'selected' : ''} onClick={() => {navigate('/products'); setIsMenuOpen(false)}}>Products</a>
+              <a className={location.pathname === '/' ? 'selected' : ''} onClick={() => { NavigateTo('/'); }}>Home</a>
+              <a className={location.pathname === '/products' ? 'selected' : ''} onClick={() => { NavigateTo('/products'); }}>Products</a>
+              <a className={location.pathname === '/forum' ? 'selected' : ''} onClick={() => {{/* navigate('/hosting'); */} triggerLocalNotification('Hosting is coming soon', 'This feature is currently in development. Stay tuned for updates!', undefined, undefined); setIsMenuOpen(false)}}>Hosting</a>
               <a className={location.pathname === '/forum' ? 'selected' : ''} onClick={() => {{/* navigate('/forum'); */} triggerLocalNotification('Forum is coming soon', 'This feature is currently in development. Stay tuned for updates!', undefined, undefined); setIsMenuOpen(false)}}>Forum</a>
               {/* <a className={activeTab === 'legal' ? 'selected': ''}>Legal</a> */}
               <div className="dropdown-wrapper" onMouseEnter={() => setIsLegalOpen(true)} onMouseLeave={() => setIsLegalOpen(false)}>
