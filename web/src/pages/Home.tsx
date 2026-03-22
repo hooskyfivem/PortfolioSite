@@ -63,7 +63,7 @@ const Home = () => {
             Title: "Cloud Hosting is now available",
             Description: "Our new cloud hosting service is live. Host your bots and apps with 99.9% uptime",
             Date: "Mar 5, 2026",
-            LearnMoreRoute: navigate('/hosting'),
+            LearnMoreRoute: "/hosting",
         },
     ]
     const [blogCurrent] = useState(0);
@@ -249,7 +249,7 @@ const Home = () => {
                 </div>
                 <div className={styles.BlogPostLayout} key={current}>
                     {blogsVisible.map((t, i) => (
-                        <div className={styles.Blog} key={i} onClick={() => {t.LearnMoreRoute}}>
+                        <div className={styles.Blog} key={i} onClick={() => navigate(`${t.LearnMoreRoute}`)}>
                             <div className={styles.BlogHeader}>
                                 <i className={t.Icon}></i>
                             </div>
