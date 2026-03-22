@@ -56,6 +56,20 @@ const Home = () => {
     const next = () => setCurrent(i => Math.min(testimonials.length - max_testimonials, i + 1));
     const visible = testimonials.slice(current, current + max_testimonials);
 
+    const BlogPosts = [
+        {
+            Icon: "fas fa-layer-group",
+            Tags: ["Release", "Hosting"],
+            Title: "Cloud Hosting is now available",
+            Description: "Our new cloud hosting service is live. Host your bots and apps with 99.9% uptime",
+            Date: "Mar 5, 2026",
+            LearnMoreRoute: navigate('/hosting'),
+        },
+    ]
+    const [blogCurrent] = useState(0);
+    const max_blogposts = 4;
+    const blogsVisible = BlogPosts.slice(blogCurrent, blogCurrent + max_blogposts);
+
     return (
         <>
         <title>Home - Telvion Systems</title>
@@ -233,6 +247,47 @@ const Home = () => {
                     <span className={styles.HeaderTextTwo}>Latest from Telvion</span>
                     <span className={styles.HeaderTextThree}>Stay up to date with our latest news and releases.</span>
                 </div>
+                <div className={styles.BlogPostLayout} key={current}>
+                    {blogsVisible.map((t, i) => (
+                        <div className={styles.Blog} key={i} onClick={() => {t.LearnMoreRoute}}>
+                            <div className={styles.BlogHeader}>
+                                <i className={t.Icon}></i>
+                            </div>
+                            <div className={styles.BlogMain}>
+                                <div className={styles.BlogTags}>
+                                    {t.Tags.map((tag, i) => (
+                                        <span key={i}>{tag}</span>
+                                    ))}
+                                </div>
+                                <span className={styles.BlogTitle}>{t.Title}</span>
+                                <span className={styles.BlogDescription}>{t.Description}</span>
+                                <div className={styles.BlogFooter}>
+                                    <span className={styles.BlogDate}>{t.Date}</span>
+                                    <span className={styles.ReadMore}>Read more <i className="fas fa-arrow-right-long"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+
+
+                    {/* <div className={styles.Blog}>
+                        <div className={styles.BlogHeader}>
+                            <i className="fas fa-layer-group"></i>
+                        </div>
+                        <div className={styles.BlogMain}>
+                            <div className={styles.BlogTags}>
+                                <span>Release</span>
+                            </div>
+                            <span className={styles.BlogTitle}>New dashboard features released</span>
+                            <span className={styles.BlogDescription}>We've added analytics, user management, and more to our web dashboard product</span>
+                            <div className={styles.BlogFooter}>
+                                <span className={styles.BlogDate}>Mar 5, 2026</span>
+                                <span className={styles.ReadMore}>Read more <i className="fas fa-arrow-right-long"></i></span>
+                            </div>
+                        </div>
+                    </div> */}
+                </div>
+                <span className={styles.BlogViewAllButton}>View All Blog Posts <i className="fas fa-arrow-right"></i></span>
             </div>
 
             {/* FAQ */}

@@ -3,7 +3,7 @@ import './App.css'
 import BackgroundParticles from './BackgroundParticles';
 import Home from './pages/Home';
 import Products from './pages/Products';
-import Forum from './pages/Forum';
+import Hosting from './pages/Hosting';
 import Cart from './pages/Cart';
 import Profile from './pages/Profile';
 import Terms from './pages/Legal/Terms';
@@ -180,8 +180,7 @@ function App() {
             <nav className={`nav-center ${isMenuOpen ? 'open' : ''}`}>
               <a className={location.pathname === '/' ? 'selected' : ''} onClick={() => { NavigateTo('/'); }}>Home</a>
               <a className={location.pathname === '/products' ? 'selected' : ''} onClick={() => { NavigateTo('/products'); }}>Products</a>
-              <a className={location.pathname === '/forum' ? 'selected' : ''} onClick={() => {{/* navigate('/hosting'); */} triggerLocalNotification('Hosting is coming soon', 'This feature is currently in development. Stay tuned for updates!', undefined, undefined); setIsMenuOpen(false)}}>Hosting</a>
-              <a className={location.pathname === '/forum' ? 'selected' : ''} onClick={() => {{/* navigate('/forum'); */} triggerLocalNotification('Forum is coming soon', 'This feature is currently in development. Stay tuned for updates!', undefined, undefined); setIsMenuOpen(false)}}>Forum</a>
+              <a className={location.pathname === '/hosting' ? 'selected' : ''} onClick={() => {{/* navigate('/hosting'); */} triggerLocalNotification('Hosting is coming soon', 'This feature is currently in development. Stay tuned for updates!', undefined, undefined); setIsMenuOpen(false)}}>Hosting</a>
               {/* <a className={activeTab === 'legal' ? 'selected': ''}>Legal</a> */}
               <div className="dropdown-wrapper" onMouseEnter={() => setIsLegalOpen(true)} onMouseLeave={() => setIsLegalOpen(false)}>
                 <a className={`dropdown-trigger ${['/terms', '/privacy', '/refund'].includes(location.pathname) ? 'selected' : ''}`}>
@@ -230,7 +229,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/forum" element={<Forum />} />
+            <Route path="/hosting" element={<Hosting />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/refund" element={<Refund />} />

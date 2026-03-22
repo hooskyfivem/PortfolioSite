@@ -264,7 +264,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    width: 70%;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -539,6 +539,116 @@
 }
 
 /* Latest Updates */
+.BlogPostLayout {
+    width: 70%;
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.Blog {
+    width: 220px;
+    min-height: 270px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    cursor: pointer;
+    background: #fff;
+    border: 1.5px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.Blog:hover {
+    border-color: rgba(124, 58, 237, 0.4);
+    transform: translateY(-4px);
+}
+
+.BlogHeader {
+    padding: 30px;
+    background: #F5F3FF;
+    display: flex;
+    justify-content: center;
+}
+
+.BlogHeader i {
+    color: #7c3aed;
+    font-size: 26px;
+}
+
+.BlogMain {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 16px 16px 16px;
+    gap: 6px;
+}
+
+.BlogTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.BlogTags span {
+    padding: 2px 10px;
+    width: fit-content;
+    font-size: 10px;
+    background: rgba(124, 58, 237, 0.15);
+    border: 1.5px solid rgba(124, 58, 237, 0.3);
+    border-radius: 8px;
+    color: #7c3aed;
+}
+
+.BlogTitle {
+    font-size: 13.5px;
+    font-weight: bold;
+    color: #000;
+}
+
+.BlogDescription {
+    font-size: 12.5px;
+    flex-wrap: wrap;
+    color: #81798B;
+    font-weight: 500;
+}
+
+.BlogFooter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.BlogDate {
+    font-size: 11.5px;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.ReadMore {
+    font-size: 11.5px;
+    color: #7c3aed;
+}
+
+.BlogViewAllButton {
+    min-width: auto;
+    min-height: auto;
+    margin-top: 10px;
+    font-size: 13px;
+    border: 1.5px solid rgba(0, 0, 0, 0.2);
+    color: var(--product-features-button-color);
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.BlogViewAllButton:hover {
+    background: var(--product-features-button-hover);
+}
 
 /* FAQ */
 
