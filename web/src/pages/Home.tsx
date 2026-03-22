@@ -81,7 +81,8 @@ const Home = ({ triggerLocalNotification }: HomeProps) => {
         },
         {
             Title: "Do you offer refunds?",
-            Answer: ["We typically do not offer refunds unless the product has not been delivered within 30 days of the purchase. ", <a key="link" className={styles.FAQLink} onClick={() => NavigateTo('/refund')}>Read our full refund policy.</a>]
+            Answer: "We typically do not offer refunds unless the product has not been delivered within 30 days of the purchase. ",
+            Extra: [<a key="link" className={styles.FAQLink} onClick={() => NavigateTo('/refund')}><i key = "icon" className="fas fa-book"></i> Read our full refund policy.</a>]
         },
         {
             Title: "What payment methods do you accept?",
@@ -89,14 +90,15 @@ const Home = ({ triggerLocalNotification }: HomeProps) => {
         },
         {
             Title: "How do I get support?",
-            Answer: ["You can get support by emailing ", <i key="icon" className="fas fa-at"></i>, " telvionsupport@gmail.com, or filling out our ", <a key="link" className={styles.FAQLink} onClick={() => triggerLocalNotification('Support is coming soon', 'This feature is currently in development. Stay tuned for updates!', undefined, undefined)}>support form.</a>]
+            Answer: ["You can get support by emailing us or filling out our ", <a key="link" className={styles.FAQLink} onClick={() => triggerLocalNotification('Support is coming soon', 'This feature is currently in development. Stay tuned for updates!', undefined, undefined)}>support form.</a>],
+            Extra: [<i key = "icon" style = {{fontWeight: 'bold', color: '#7c3aed'}} className="fas fa-envelope"></i>, " telvionsupport@gmail.com"]
         },
         {
             Title: "Can I request custom features?",
             Answer: ["You can request custom features by going to ", <a key="link" className={styles.FAQLink} onClick={() => NavigateTo('/products')}>our products page</a>, " and inquiring about it to get an exact price quote." ]
         }
-
     ]
+
     return (
         <>
         <title>Home - Telvion Systems</title>
@@ -315,6 +317,9 @@ const Home = ({ triggerLocalNotification }: HomeProps) => {
                                 <i className="fas fa-plus"></i>
                             </div>
                             <span className={openFAQ === i ? styles.FAQDescription : styles.FAQDescriptionHidden}>{faq.Answer}</span>
+                            {faq.Extra && (
+                                <span className={openFAQ === i ? styles.FAQDescExtra : styles.FAQDescriptionHidden}>{faq.Extra}</span>
+                            )}
                         </div>
                         );
                     })}
