@@ -84,7 +84,7 @@
     font-weight: bold;
     background: none;
     color: rgb(0, 0, 0, 0.5);
-    border: 2.5px solid rgba(0, 0, 0, 0.6);
+    border: 1.5px solid rgba(0, 0, 0, 0.6);
     border-radius: 8px;
     padding: 8px 16px;
     cursor: pointer;
@@ -248,7 +248,7 @@
 }
 
 .SectionHeader .HeaderTextTwo {
-    color: #000;
+    color: #0f172a;
     font-weight: bold;
     font-size: 24px;
 }
@@ -346,7 +346,7 @@
 /* Product Conditioning */
 .Product {
   background: var(--product-background);
-  border: 1px solid rgba(0,0,0,0.2);
+  border: 1.5px solid #e2e8f0;
   border-radius: 8px;
   padding: 20px;
   display: flex;
@@ -354,6 +354,7 @@
   gap: 14px;
   max-width: 250px;
   width: 100%;
+  transition: border-color 0.2s ease
 }
 
 .Product:hover {
@@ -469,7 +470,7 @@
     min-width: 220px;
     flex: 1;
     background: #fff;
-    border: 0.5px solid #e2e8f0;
+    border: 1.5px solid #e2e8f0;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -478,6 +479,7 @@
     padding: 16px;
     gap: 10px;
     cursor: pointer;
+    transition: border-color 0.2s ease
 }
 
 .TestimonialsLayout .Testimonial:hover {
@@ -532,7 +534,7 @@
     display: flex;
     flex-direction: column;
     font-size: 14px;
-    color: #000;
+    color: #0f172a;
 }
 
 .TestimonialNames .TestimonialName {
@@ -562,7 +564,7 @@
     text-align: left;
     cursor: pointer;
     background: #fff;
-    border: 1.5px solid rgba(0, 0, 0, 0.2);
+    border: 1.5px solid #E2E8F0;
     border-radius: 8px;
     overflow: hidden;
     transition: border-color 0.2s ease, transform 0.2s ease;
@@ -613,7 +615,7 @@
 .BlogTitle {
     font-size: 13.5px;
     font-weight: bold;
-    color: #000;
+    color: #0f172a;
 }
 
 .BlogDescription {
@@ -644,7 +646,7 @@
     min-height: auto;
     margin-top: 10px;
     font-size: 13px;
-    border: 1.5px solid rgba(0, 0, 0, 0.2);
+    border: 1.5px solid #E2E8F0;
     color: var(--product-features-button-color);
     border-radius: 8px;
     padding: 12px;
@@ -657,19 +659,125 @@
 }
 
 /* FAQ */
+.FAQLayout {
+    width: 70%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.FAQ {
+    width: 80%;
+    /* height: 40px; */
+    display: flex;
+    flex-direction: column;
+    padding: 16px 20px;
+    background: #fff;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 8px;
+    cursor: pointer;
+    gap: 12px;
+    transition: border-color 0.2s ease;
+}
+
+.FAQLink {
+    color: #7c3aed;
+}
+
+.FAQLink:hover {
+    color: #5529a1;
+    text-decoration: underline;
+}
+
+.FAQ:hover {
+    border-color: rgba(124, 58, 237, 0.3);
+}
+
+.FAQOpen {
+    border-color: rgba(124, 58, 237, 0.3);
+}
+
+.FAQHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.FAQTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.FAQHeader i {
+    color: #7c3aed;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.FAQDescription {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.FAQDescriptionHidden {
+    display: none;
+}
 
 /* Get Started */
 .EndingSectionLayout {
-    width: 60%;
-    padding: 80px;
+    background: #F5F3FF;
+    border: 1.5px solid #DDD6FE;
+    border-radius: 8px;
+    width: 100%;
+    padding: 50px;
     margin-top: 24px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    background: green;
+    gap: 20px;
+}
+
+.EndingTitle {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+}
+
+.EndingDesc {
+    color: #81798B;
+}
+
+.EndingSectionButton {
+    display: flex;
+    gap: 15px;
+}
+
+.EndingSectionButton span {
+    color: #000;
+    border: 1.5px solid rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.EndingSectionButton span:hover {
+    border-color: #7c3aed;
+}
+
+.EndingEmail {
+    color: #81798B;
+    font-weight: bold;
 }
 
 /* Media */
@@ -691,6 +799,10 @@
     .SectionHeader {
         align-items: center;
     }
+
+    .FAQ {
+        width: 100%;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -702,6 +814,10 @@
 
     .SectionHeader {
         align-items: center;
+    }
+
+    .FAQ {
+        width: 100%;
     }
 }
 

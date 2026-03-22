@@ -17,14 +17,14 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { supabase } from './supabaseClient';
 import config from '../src/config';
 
+import { useNotifications } from './functions/Notifications';
+
 function App() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLegalOpen, setIsLegalOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showNotification, setShowNotification] = useState(false);
-  const [notification, setNotification] = useState<any>(null);
-  const DiscordLink = 'https://discord.gg/7zqTJ4FGcc';
+  const { showNotification, setShowNotification, notification, triggerLocalNotification } = useNotifications();
   const location = useLocation();
 
   useEffect(() => {
@@ -37,24 +37,6 @@ function App() {
       });
     }
   }, [])
-
-  useEffect(() => {
-    supabase
-    .from('announcements')
-    .select('*')
-    .eq('enabled', true)
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .single()
-    .then(({ data, error }) => {
-      console.log('announcement data:', data);
-      console.log('announcement error:', error);
-      if (data) {
-        setNotification(data);
-        setShowNotification(true);
-      }
-    });
-  }, []);
 
   const handleCartClick = () => {
     triggerLocalNotification('Cart is coming soon', 'This feature is currently in development. Stay tuned for updates!', 'Explore Products', '/products')
@@ -76,36 +58,6 @@ function App() {
       NavigateTo('/profile')
     }
   }
-
-  const triggerLocalNotification = (title: string, description: string, secondayText: string | undefined, secondaryLink: string | undefined) => {
-    setNotification({
-      title: title,
-      description: description,
-      type: 'notice',
-      primary_button_text: 'Got it',
-      secondary_button_text: secondayText,
-      secondary_button_link: secondaryLink,
-    });
-    setShowNotification(true);
-  }
-
-  // const ScrollToTop = () => {
-  //     const start = document.documentElement.scrollTop || document.body.scrollTop;
-  //     const duration = 500;
-  //     const startTime = performance.now();
-
-  //     const scroll = (currentTime: number) => {
-  //         const elapsed = currentTime - startTime;
-  //         const progress = Math.min(elapsed / duration, 1);
-  //         const ease = 1 - Math.pow(1 - progress, 3);
-  //         const scrollTop = start * (1 - ease);
-  //         document.documentElement.scrollTop = scrollTop;
-  //         document.body.scrollTop = scrollTop;
-  //         if (progress < 1) requestAnimationFrame(scroll);
-  //     };
-
-  //     requestAnimationFrame(scroll);
-  // }
 
   const NavigateTo = (path: string) => {
     document.documentElement.scrollTop = 0;
@@ -200,9 +152,7 @@ function App() {
                   <div className="profile" onClick={HandleLoginClick}><i className="fa fa-user"></i></div>
                 </div>
                 <div className="Support">
-                  <text onClick={() => { triggerLocalNotification('Support is coming soon', 'This feature is currently in development. Stay tuned for updates!', 'Explore Products', '/products'); setIsMenuOpen(false); }}>Need Support?</text>
-                  {/* <img src="/Discord_White.webp" className="discordLogo" alt="Discord" /> */}
-                  {/* <i className="fas fa-layer-group"></i> */}
+                  <span onClick={() => { triggerLocalNotification('Support is coming soon', 'This feature is currently in development. Stay tuned for updates!', 'Explore Products', '/products'); setIsMenuOpen(false); }}>Need Support?</span>
                 </div>
               </div>
             </nav>
@@ -215,10 +165,8 @@ function App() {
                   <i className="fa fa-user"></i>
                 </div>
                 <div className="Support" onClick={() => {triggerLocalNotification('Support is coming soon', 'This feature is currently in development. Stay tuned for updates!', 'Explore Products', '/products')}}>
-                  <text>Need Support?</text>
+                  <span>Need Support?</span>
                   <img src={config.SupportImage} className="questionMark" />
-                  {/* <img src="/Discord_White.webp" className="discordLogo"></img> */}
-                  {/* <i className="fas fa-layer-group"></i> */}
                 </div>
               </div>
             </div>
@@ -227,7 +175,7 @@ function App() {
 
         <main className={`main-content ${showNotification ? 'content-blurred' : ''}`}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home triggerLocalNotification={triggerLocalNotification}/>} />
             <Route path="/products" element={<Products />} />
             <Route path="/hosting" element={<Hosting />} />
             <Route path="/terms" element={<Terms />} />
@@ -252,10 +200,10 @@ function App() {
                     </div>
                   </div>
                   <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
-                  <div className="footer-advertise" onClick={() => window.open(DiscordLink, '_blank', 'noopener,noreferrer')}>
+                  {/* <div className="footer-advertise" onClick={() => window.open(DiscordLink, '_blank', 'noopener,noreferrer')}>
                       <img src={config.footerDiscordLogo} className="discordLogo"></img>
-                      <text>Discord Server</text>
-                  </div>
+                      <span>Discord Server</span>
+                  </div> */}
               </div>
               <div className="footer-mid">
                     <p>test</p>

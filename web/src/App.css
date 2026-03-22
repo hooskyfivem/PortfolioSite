@@ -411,7 +411,7 @@ footer::before {
   width: 22px;
 }
 
-.footer-advertise text {
+.footer-advertise span {
   font-size: 13.5px;
   font-weight: bold;
 }
@@ -471,7 +471,7 @@ footer::before {
   transition: transform 0.6s ease-in-out
 }
 
-.Advertise, .Support text {
+.Advertise, .Support span {
   font-size: 13.5px;
   font-weight: bold;
 }
@@ -882,7 +882,7 @@ h1, p, span {
     gap: 8px !important;
   }
 
-  .Advertise, .Support text {
+  .Advertise, .Support span {
     display: none !important;
   }
 

@@ -4,8 +4,13 @@ import styles from '../styles/Home.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-const Home = () => {
+interface HomeProps {
+    triggerLocalNotification: (title: string, description: string, secondaryText: string | undefined, secondaryLink: string | undefined) => void;
+}
+
+const Home = ({ triggerLocalNotification }: HomeProps) => {
     const navigate = useNavigate();
+    const [openFAQ, setFAQOpen] = useState<number | null>(null);
 
     const NavigateTo = (path: string) => {
         document.documentElement.scrollTop = 0;
@@ -66,10 +71,32 @@ const Home = () => {
             LearnMoreRoute: "/hosting",
         },
     ]
-    const [blogCurrent] = useState(0);
     const max_blogposts = 4;
-    const blogsVisible = BlogPosts.slice(blogCurrent, blogCurrent + max_blogposts);
+    const blogsVisible = BlogPosts.slice(0, max_blogposts);
 
+    const FAQ = [
+        {
+            Title: "How long does delivery take?",
+            Answer: "Most digital products are delivered instantly after purchase. Custom software projects typically take 3-7 business days depending on complexity."
+        },
+        {
+            Title: "Do you offer refunds?",
+            Answer: ["We typically do not offer refunds unless the product has not been delivered within 30 days of the purchase. ", <a key="link" className={styles.FAQLink} onClick={() => NavigateTo('/refund')}>Read our full refund policy.</a>]
+        },
+        {
+            Title: "What payment methods do you accept?",
+            Answer: "We accept payments through Stripe, which includes, but is not limited to Visa, Mastercard, Amex, and Cash App"
+        },
+        {
+            Title: "How do I get support?",
+            Answer: ["You can get support by emailing ", <i key="icon" className="fas fa-at"></i>, " telvionsupport@gmail.com, or filling out our ", <a key="link" className={styles.FAQLink} onClick={() => triggerLocalNotification('Support is coming soon', 'This feature is currently in development. Stay tuned for updates!', undefined, undefined)}>support form.</a>]
+        },
+        {
+            Title: "Can I request custom features?",
+            Answer: ["You can request custom features by going to ", <a key="link" className={styles.FAQLink} onClick={() => NavigateTo('/products')}>our products page</a>, " and inquiring about it to get an exact price quote." ]
+        }
+
+    ]
     return (
         <>
         <title>Home - Telvion Systems</title>
@@ -148,7 +175,7 @@ const Home = () => {
 
             {/* Top Products */}
 
-            <div className={styles.SectionContainer}>
+            {/* <div className={styles.SectionContainer}>
                 <div className={styles.SectionHeader}>
                     <span className={styles.HeaderTextOne}>OUR TOP PRODUCTS</span>
                     <span className={styles.HeaderTextTwo}>Built for reliability</span>
@@ -203,7 +230,7 @@ const Home = () => {
 
                 </div>
                 <span className={styles.ViewAllProducts} onClick={() => NavigateTo('/products')}>View All Products <i className="fas fa-arrow-right"></i></span>
-            </div>
+            </div> */}
 
             {/* Testimonials */}
             <div className={styles.SectionContainer}>
@@ -268,24 +295,6 @@ const Home = () => {
                             </div>
                         </div>
                     ))}
-
-
-                    {/* <div className={styles.Blog}>
-                        <div className={styles.BlogHeader}>
-                            <i className="fas fa-layer-group"></i>
-                        </div>
-                        <div className={styles.BlogMain}>
-                            <div className={styles.BlogTags}>
-                                <span>Release</span>
-                            </div>
-                            <span className={styles.BlogTitle}>New dashboard features released</span>
-                            <span className={styles.BlogDescription}>We've added analytics, user management, and more to our web dashboard product</span>
-                            <div className={styles.BlogFooter}>
-                                <span className={styles.BlogDate}>Mar 5, 2026</span>
-                                <span className={styles.ReadMore}>Read more <i className="fas fa-arrow-right-long"></i></span>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
                 <span className={styles.BlogViewAllButton}>View All Blog Posts <i className="fas fa-arrow-right"></i></span>
             </div>
@@ -297,19 +306,33 @@ const Home = () => {
                     <span className={styles.HeaderTextTwo}>Common questions</span>
                     <span className={styles.HeaderTextThree}>Everything you need to know about Telvion Systems.</span>
                 </div>
+                <div className={styles.FAQLayout}>
+                    {FAQ.map((faq, i) => {
+                        return (
+                        <div className={`${styles.FAQ} ${openFAQ === i ? styles.FAQOpen : ''}`} onClick={() => setFAQOpen(openFAQ === i ? null : i)} key={i}>
+                             <div className={styles.FAQHeader}>
+                                <span className={styles.FAQTitle}>{faq.Title}</span>
+                                <i className="fas fa-plus"></i>
+                            </div>
+                            <span className={openFAQ === i ? styles.FAQDescription : styles.FAQDescriptionHidden}>{faq.Answer}</span>
+                        </div>
+                        );
+                    })}
+                </div>
             </div>
 
             {/* Ending */}
-            {/* <div className={styles.SectionContainer}>
+            <div className={styles.SectionContainer}>
                 <div className={styles.EndingSectionLayout}>
                     <span className={styles.EndingTitle}>Ready to get started?</span>
-                    <span className={styles.EndingDesc}>Browse our products</span>
+                    <span className={styles.EndingDesc}>Browse our products, hosting services, and more. Email us for support</span>
                     <div className={styles.EndingSectionButton}>
-                        <button>View our Products</button>
-                        <button>View our Hosting</button>
+                        <span>View our Products</span>
+                        <span>View our Hosting</span>
                     </div>
+                    <span className={styles.EndingEmail}><i className="fas fa-envelope"></i> telvionsupport@gmail.com</span>
                 </div>
-            </div> */}
+            </div>
 
         </div>
         </>
