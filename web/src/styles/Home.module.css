@@ -680,8 +680,34 @@
     border: 1.5px solid #E2E8F0;
     border-radius: 8px;
     cursor: pointer;
-    gap: 12px;
+    /* gap: 12px; */
     transition: border-color 0.2s ease;
+}
+
+.FAQContentHidden {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.FAQContentVisible {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.FAQOpen .FAQContentVisible {
+    max-height: 200px;
+    opacity: 1;
 }
 
 .FAQLink {
@@ -700,6 +726,7 @@
 
 .FAQOpen {
     border-color: rgba(124, 58, 237, 0.3);
+    /* gap: 12px; */
 }
 
 .FAQHeader {
@@ -707,6 +734,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .FAQTitle {
@@ -719,6 +747,11 @@
     color: #7c3aed;
     font-size: 14px;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.FAQ:hover .FAQHeader i {
+    transform: rotate(45deg);
 }
 
 .FAQDescription {
@@ -736,9 +769,9 @@
     font-weight: bold;
 }
 
-.FAQDescriptionHidden {
+/* .FAQDescriptionHidden {
     display: none;
-}
+} */
 
 /* Get Started */
 .EndingSectionLayout {

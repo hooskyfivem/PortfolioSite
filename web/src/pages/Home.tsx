@@ -316,10 +316,12 @@ const Home = ({ triggerLocalNotification }: HomeProps) => {
                                 <span className={styles.FAQTitle}>{faq.Title}</span>
                                 <i className="fas fa-plus"></i>
                             </div>
-                            <span className={openFAQ === i ? styles.FAQDescription : styles.FAQDescriptionHidden}>{faq.Answer}</span>
-                            {faq.Extra && (
-                                <span className={openFAQ === i ? styles.FAQDescExtra : styles.FAQDescriptionHidden}>{faq.Extra}</span>
-                            )}
+                            <div className={`${openFAQ === i ? styles.FAQContentVisible : styles.FAQContentHidden}`}>
+                                <span className={styles.FAQDescription}>{faq.Answer}</span>
+                                {faq.Extra && (
+                                    <span className={styles.FAQDescExtra}>{faq.Extra}</span>
+                                )}
+                            </div>
                         </div>
                         );
                     })}
